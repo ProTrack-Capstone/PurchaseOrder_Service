@@ -8,4 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ProjectClient {
     @GetMapping("/{id}")
     Object getProjectById(@PathVariable Long id);
+
+    @GetMapping("/{projectId}/employees")
+    Object getEmployeesWithProjectId(@PathVariable Long projectId);
+     
 }
+
