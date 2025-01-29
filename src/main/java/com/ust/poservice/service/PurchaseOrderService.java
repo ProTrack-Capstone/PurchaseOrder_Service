@@ -36,8 +36,8 @@ public class PurchaseOrderService {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Purchase Order not found"));
     }
 
-    public Object getEmployeeDetails(Long id) {
-        return employeeClient.getEmployeeById(id);
+    public Object getEmployeeDetails(String employeeid) {
+        return employeeClient.getEmployeeById(employeeid);
     }
 
     public Object getProjectDetails(Long projectId) {
@@ -59,4 +59,9 @@ public class PurchaseOrderService {
         details.put("employeeDetails", employeeClient.getEmployeeById(purchaseOrder.getEmployeeId()));
         return details;
     }
+
+    public Object getEmployeesWithProjectId(Long projectId) {
+        return projectClient.getEmployeesWithProjectId(projectId);
+    }
+    
 }

@@ -43,7 +43,7 @@ public class PurchaseOrderController {
     }
 
     @GetMapping("/employee-details/{employeeId}")
-    public ResponseEntity<Object> getEmployeeDetails(@PathVariable Long employeeId) {
+    public ResponseEntity<Object> getEmployeeDetails(@PathVariable String employeeId) {
         Object employeeDetails = service.getEmployeeDetails(employeeId);
         return ResponseEntity.ok(employeeDetails);
     }
@@ -60,12 +60,18 @@ public class PurchaseOrderController {
         return ResponseEntity.ok("Purchase Order deleted successfully!");
     }
 
-    @GetMapping("/details/{poId}")
+    @GetMapping("/detailsbypoID/{poId}")
     public ResponseEntity<Map<String, Object>> getProjectAndEmployeeDetailsByPoId(@PathVariable ("poId") String id) {
         Map<String, Object> details = service.getProjectAndEmployeeDetailsByPoId(id);
         if (details == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(details);
+    }
+
+    @GetMapping("/detailsbyprojectID/{projectId}")
+    public ResponseEntity<Object> getEmployeesWithProjectId(@PathVariable Long projectId) {
+        Object employees = service.getEmployeesWithProjectId(projectId);
+        return ResponseEntity.ok(employees);
     }
 }

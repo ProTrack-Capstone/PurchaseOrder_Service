@@ -27,7 +27,7 @@ public class PurchaseOrder {
     private Long projectId;
 
     @Column(nullable = false)
-    private Long employeeId;
+    private String employeeId;
 
     @Column(nullable = false)
     private String fundInterval;
@@ -49,12 +49,12 @@ public class PurchaseOrder {
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String id, String poNumber, Long projectId, Long employeeId, String fundInterval,
+    public PurchaseOrder(String id, String poNumber, Long projectId, String employeeId, String fundInterval,
             String bankName, String IFSC, String accountNumber, String status) {
         this.id = id;
         this.poNumber = poNumber;
         this.projectId = projectId;
-        //this.employeeId = employeeId;
+        this.employeeId = employeeId;
         this.fundInterval = fundInterval;
         this.bankName = bankName;
         this.IFSC = IFSC;
@@ -86,11 +86,11 @@ public class PurchaseOrder {
         this.projectId = projectId;
     }
 
-    public Long getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
