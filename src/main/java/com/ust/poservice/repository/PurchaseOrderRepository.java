@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ust.poservice.entity.PurchaseOrder;
 
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder,String> {
-    List<PurchaseOrder> findByProjectId(Long projectId);
-    List<PurchaseOrder> findByEmployeeId(String employeeId);
+    List<PurchaseOrder> findByProjectId(String projectId);
+    //List<PurchaseOrder> findByEmployeeId(String employeeId);
 }
