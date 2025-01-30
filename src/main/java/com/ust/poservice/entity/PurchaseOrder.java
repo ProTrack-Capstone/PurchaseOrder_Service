@@ -20,14 +20,8 @@ public class PurchaseOrder {
     )
     private String id;
 
-    @Column(nullable = false, unique = true)
-    private String poNumber;
-
     @Column(nullable = false)
-    private Long projectId;
-
-    @Column(nullable = false)
-    private String employeeId;
+    private String projectId;
 
     @Column(nullable = false)
     private String fundInterval;
@@ -36,30 +30,19 @@ public class PurchaseOrder {
     private String bankName;
 
     @Column(nullable = false)
-    private String IFSC;
-
-    @Column(nullable = false)
     private String accountNumber;
-
-    @Column(nullable = false)
-    private String status;
 
     // Getters and Setters
 
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String id, String poNumber, Long projectId, String employeeId, String fundInterval,
-            String bankName, String IFSC, String accountNumber, String status) {
+    public PurchaseOrder(String id, String projectId, String fundInterval,String bankName, String accountNumber) {
         this.id = id;
-        this.poNumber = poNumber;
         this.projectId = projectId;
-        this.employeeId = employeeId;
         this.fundInterval = fundInterval;
         this.bankName = bankName;
-        this.IFSC = IFSC;
         this.accountNumber = accountNumber;
-        this.status = status;
     }
 
     public String getId() {
@@ -70,29 +53,15 @@ public class PurchaseOrder {
         this.id = id;
     }
 
-    public String getPoNumber() {
-        return poNumber;
-    }
 
-    public void setPoNumber(String poNumber) {
-        this.poNumber = poNumber;
-    }
-
-    public Long getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
 
     public String getFundInterval() {
         return fundInterval;
@@ -110,13 +79,6 @@ public class PurchaseOrder {
         this.bankName = bankName;
     }
 
-    public String getIFSC() {
-        return IFSC;
-    }
-
-    public void setIFSC(String IFSC) {
-       this.IFSC = IFSC;
-    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -126,13 +88,4 @@ public class PurchaseOrder {
         this.accountNumber = accountNumber;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    
 }
