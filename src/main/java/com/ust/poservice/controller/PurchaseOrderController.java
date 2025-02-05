@@ -36,16 +36,16 @@ public class PurchaseOrderController {
         return ResponseEntity.ok(purchaseOrders);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PurchaseOrder> getPurchaseOrderById(@PathVariable String id) {
-        PurchaseOrder purchaseOrder = service.getPurchaseOrderById(id);
+    @GetMapping("/{poId}")
+    public ResponseEntity<PurchaseOrder> getPurchaseOrderById(@PathVariable String poId) {
+        PurchaseOrder purchaseOrder = service.getPurchaseOrderById(poId);
         return ResponseEntity.ok(purchaseOrder);
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePurchaseOrder(@PathVariable String id) {
-        service.deletePurchaseOrder(id);
+    @DeleteMapping("/{poId}")
+    public ResponseEntity<String> deletePurchaseOrder(@PathVariable String poId) {
+        service.deletePurchaseOrder(poId);
         return ResponseEntity.ok("Purchase Order deleted successfully!");
     }
 
