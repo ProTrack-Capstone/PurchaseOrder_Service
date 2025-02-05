@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.annotations.Fetch;
 import org.springframework.stereotype.Service;
 
 import com.ust.poservice.entity.PurchaseOrder;
@@ -33,13 +32,13 @@ public class PurchaseOrderService {
         return repository.findAll();
     }
 
-    public PurchaseOrder getPurchaseOrderById(String id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Purchase Order not found"));
+    public PurchaseOrder getPurchaseOrderById(String poId) {
+        return repository.findById(poId).orElseThrow(() -> new RuntimeException("Purchase Order not found"));
     }
 
 
-    public void deletePurchaseOrder(String id) {
-        repository.deleteById(id);
+    public void deletePurchaseOrder(String poId) {
+        repository.deleteById(poId);
     }
 
     public Object getProjectDetails(String projectId) {
@@ -49,14 +48,8 @@ public class PurchaseOrderService {
     public Map<String, Object> getProjectDetailsWithEmployees(String projectId) {
     Map<String, Object> response = new LinkedHashMap<>(); // Ensures insertion order is maintained
 
-    // Fetch Project Details first
-    Object projectDetails = projectClient.getProjectById(projectId);
-    response.put("projectDetails", projectDetails);
-
-    // Fetch Employees Assigned to Project
-    // List<Object> employees = projectClient.getEmployeesWithProjectId(projectId);
-    // response.put("employees", employees);
-
+    
+    
     // Fetch Purchase Order Details
     List<PurchaseOrder> purchaseOrders = repository.findByProjectId(projectId);
     if (purchaseOrders.isEmpty()) {
@@ -64,6 +57,15 @@ public class PurchaseOrderService {
     }
     PurchaseOrder purchaseOrder = purchaseOrders.get(0);
     response.put("purchaseOrderDetails", purchaseOrder);
+
+    // Fetch Project Details first
+    Object projectDetails = projectClient.getProjectById(projectId);
+    response.put("projectDetails", projectDetails);
+
+    // Fetch Employees Assigned to Project
+    List<Object> employees = projectClient.getEmployeesWithProjectId(projectId);
+    response.put("employees", employees);
+    
     return response;
     }   
 }

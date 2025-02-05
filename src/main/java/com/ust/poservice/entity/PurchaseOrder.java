@@ -18,10 +18,22 @@ public class PurchaseOrder {
             name = "custom-id-generator",
             strategy = "com.ust.poservice.Generator.CustomIdGenerator"
     )
-    private String id;
+    private String poId;
 
     @Column(nullable = false)
     private String projectId;
+
+    @Column(nullable=false)
+    private String pointOfContact;
+
+    @Column(nullable = false)
+    private String emailId;
+
+    @Column(nullable = false)
+    private Long phoneNumber;
+
+    @Column(nullable = false)
+    private String paymentMode;
 
     @Column(nullable = false)
     private String fundInterval;
@@ -31,28 +43,28 @@ public class PurchaseOrder {
 
     @Column(nullable = false)
     private String accountNumber;
-
-    // Getters and Setters
-
+    
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(String id, String projectId, String fundInterval,String bankName, String accountNumber) {
-        this.id = id;
+    public PurchaseOrder(String projectId, String pointOfContact, String emailId, Long phoneNumber, String paymentMode, String fundInterval, String bankName, String accountNumber) {
         this.projectId = projectId;
+        this.pointOfContact = pointOfContact;
+        this.emailId = emailId;
+        this.phoneNumber = phoneNumber;
+        this.paymentMode = paymentMode;
         this.fundInterval = fundInterval;
         this.bankName = bankName;
         this.accountNumber = accountNumber;
     }
 
-    public String getId() {
-        return id;
+    public String getPoId() {
+        return poId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPoId(String poId) {
+        this.poId = poId;
     }
-
 
     public String getProjectId() {
         return projectId;
@@ -62,6 +74,37 @@ public class PurchaseOrder {
         this.projectId = projectId;
     }
 
+    public String getPointOfContact() {
+        return pointOfContact;
+    }
+
+    public void setPointOfContact(String pointOfContact) {
+        this.pointOfContact = pointOfContact;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(String paymentMode) {
+        this.paymentMode = paymentMode;
+    }
 
     public String getFundInterval() {
         return fundInterval;
@@ -79,7 +122,6 @@ public class PurchaseOrder {
         this.bankName = bankName;
     }
 
-
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -87,5 +129,8 @@ public class PurchaseOrder {
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
+
+
+    // Getters and Setters
 
 }
